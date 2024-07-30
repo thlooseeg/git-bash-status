@@ -26,12 +26,7 @@ function git-repo-name {
     echo $(git remote show -n origin 2>/dev/null | grep Fetch | cut -d: -f2- | awk -F/ '{ sub(/\.git$/, ""); print $(NF-0)}')
 }
 function git-dirty {
-    st=$(git status 2>/dev/null | tail -n 1)
-    # if [[ $st != "nothing to commit (working directory clean)" ]] ## THL  modified 
-    if [[ $st != "nothing to commit, working tree clean" ]]
-    then
-        echo "*"
-    fi
+    [[ $(git status --porcelain 2> /dev/null) ]] && echo "*"
 }
 function git-unpushed {
     brinfo=$(git branch -v 2>/dev/null | grep $(git-branch-name))

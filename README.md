@@ -1,6 +1,6 @@
 
 
-# Bash-Git-Status
+# Git-Bash-Status
 
 Enhance bash prompt to include git repo information
 
